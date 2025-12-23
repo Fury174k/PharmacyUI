@@ -1,5 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
-import { Bell, AlertTriangle, AlertCircle, Info, Check } from 'lucide-react';
+import {
+  Bell,
+  AlertTriangle,
+  AlertCircle,
+  Info,
+  Check
+} from "react-feather";
 import type { Alert, AlertsResponse } from '../../types/index';
 import { apiClient } from '../../services/api';
 
