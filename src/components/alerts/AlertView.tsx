@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { AlertTriangle, AlertCircle, Info, Check, Package, Filter } from 'lucide-react';
+import { AlertTriangle, AlertCircle, Info, Check, Package, Filter } from 'react-feather';
 import type { Alert, AlertsResponse } from '../../types/index';
 import { apiClient } from '../../services/api';
 import { Toast } from '../common/Toast';
