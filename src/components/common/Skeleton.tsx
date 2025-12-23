@@ -3,7 +3,7 @@
 // Create this file at: src/components/common/Skeletons.tsx
 // ============================================================================
 
-import React from 'react';
+import * as React from 'react';
 
 // ============================================================================
 // BASE SKELETON COMPONENT

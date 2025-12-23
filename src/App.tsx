@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import * as React from 'react';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { LoginPage } from './components/auth/LoginPage';
 import { RegisterPage } from './components/auth/RegisterPage';
@@ -6,7 +6,7 @@ import { Dashboard } from './components/dashboard/Dashboard';
 
 
 export default function App() {
-  const [showRegister, setShowRegister] = useState(false);
+  const [showRegister, setShowRegister] = React.useState(false);
 
   return (
     <AuthProvider>

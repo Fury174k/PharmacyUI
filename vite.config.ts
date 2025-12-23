@@ -15,6 +15,9 @@ export default defineConfig({
     target: 'es2020',
     commonjsOptions: {
       include: []
+    },
+    rollupOptions: {
+      external: ['react', 'react-dom']
     }
   }
 })
