@@ -7,7 +7,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { format, subDays } from 'date-fns';
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingCart } from 'react-feather';
 import type { Sale, Product } from '../../types';
 import { apiClient } from '../../services/api';
 import { SaleModal } from './SaleModal';

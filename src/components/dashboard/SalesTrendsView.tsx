@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
-import { TrendingUp } from 'lucide-react';
+import { TrendingUp } from 'react-feather';
 import { apiClient } from '../../services/api';
 import { Toast } from '../common/Toast';
 import { ChartSkeleton, StatsGridSkeleton } from '../common/Skeleton';
