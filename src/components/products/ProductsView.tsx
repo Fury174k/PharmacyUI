@@ -3,8 +3,7 @@ import type { Product } from '../../types';
 import { apiClient } from '../../services/api';
 import { ProductModal } from './ProductModal';
 import { Toast } from '../common/Toast';
-import { Package } from 'react-feather';
-import { UploadCloud } from 'lucide-react';
+import { Package, UploadCloud } from 'react-feather';
 import { ProductTableSkeleton, Skeleton } from '../common/Skeleton';
 
 export const ProductsView: React.FC = () => {
