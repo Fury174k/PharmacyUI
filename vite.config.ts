@@ -8,7 +8,8 @@ export default defineConfig({
     esbuildOptions: {
       target: 'es2020'
     },
-    include: ['prop-types']
+    include: ['prop-types', 'react/jsx-runtime'],
+    exclude: ['react', 'react-dom']
   },
   build: {
     target: 'es2020',

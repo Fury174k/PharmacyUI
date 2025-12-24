@@ -1,16 +1,17 @@
-import React, { createContext, useState, useEffect, useContext } from 'react';
+import type React from 'react';
+import { createContext, useState, useEffect, useContext } from 'react';
 import type { User, AuthContextType } from '../types';
 import { apiClient } from '../services/api';
 
-const AuthContext = React.createContext<AuthContextType | undefined>(undefined);
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [user, setUser] = React.useState<User | null>(null);
-  const [accessToken, setAccessToken] = React.useState<string | null>(localStorage.getItem('accessToken'));
-  const [refreshToken, setRefreshToken] = React.useState<string | null>(localStorage.getItem('refreshToken'));
-  const [loading, setLoading] = React.useState(true);
+  const [user, setUser] = useState<User | null>(null);
+  const [accessToken, setAccessToken] = useState<string | null>(localStorage.getItem('accessToken'));
+  const [refreshToken, setRefreshToken] = useState<string | null>(localStorage.getItem('refreshToken'));
+  const [loading, setLoading] = useState(true);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const initAuth = async () => {
       const storedAccessToken = localStorage.getItem('accessToken');
       // refresh token is optional depending on backend (TokenAuth vs JWT)
@@ -88,7 +89,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 };
 
 export const useAuth = () => {
-  const context = React.useContext(AuthContext);
+  const context = useContext(AuthContext);
   if (!context) throw new Error('useAuth must be used within AuthProvider');
   return context;
 };
