@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
-import { TrendingUp } from 'react-feather';
 import { apiClient } from '../../services/api';
 import { Toast } from '../common/Toast';
 import { ChartSkeleton, StatsGridSkeleton } from '../common/Skeleton';
@@ -163,7 +162,9 @@ export const SalesTrendsView = () => {
               </p>
             </div>
             <div className="w-14 h-14 bg-gradient-to-br from-green-100 to-green-200 dark:from-green-900/40 dark:to-green-800/40 rounded-xl flex items-center justify-center shadow-sm">
-              <TrendingUp className="w-7 h-7 text-green-600 dark:text-green-400" />
+              <svg className="w-7 h-7 text-green-600 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+              </svg>
             </div>
           </div>
         </div>
@@ -177,7 +178,9 @@ export const SalesTrendsView = () => {
               </p>
             </div>
             <div className="w-14 h-14 bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/40 dark:to-blue-800/40 rounded-xl flex items-center justify-center shadow-sm">
-              <TrendingUp className="w-7 h-7 text-blue-600 dark:text-blue-400" />
+              <svg className="w-7 h-7 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+              </svg>
             </div>
           </div>
         </div>
@@ -191,7 +194,9 @@ export const SalesTrendsView = () => {
               </p>
             </div>
             <div className="w-14 h-14 bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900/40 dark:to-purple-800/40 rounded-xl flex items-center justify-center shadow-sm">
-              <TrendingUp className="w-7 h-7 text-purple-600 dark:text-purple-400" />
+              <svg className="w-7 h-7 text-purple-600 dark:text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+              </svg>
             </div>
           </div>
         </div>
@@ -201,7 +206,9 @@ export const SalesTrendsView = () => {
       {chartData.length === 0 ? (
         <div className="text-center py-16 bg-white dark:bg-gray-800 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gray-100 dark:bg-gray-700 mb-4">
-            <TrendingUp className="w-8 h-8 text-gray-400 dark:text-gray-500" />
+            <svg className="w-8 h-8 text-gray-400 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+            </svg>
           </div>
           <p className="text-lg font-medium text-gray-900 dark:text-white mb-1">No data available</p>
           <p className="text-sm text-gray-600 dark:text-gray-400">No sales data available for this period</p>

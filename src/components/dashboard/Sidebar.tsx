@@ -1,5 +1,4 @@
 import { useAuth } from '../../contexts/AuthContext';
-import { Package, ShoppingCart, Activity, TrendingUp, AlertTriangle } from 'react-feather';
 import { useState } from 'react';
 
 interface SidebarProps {
@@ -12,11 +11,31 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, onViewChange }) =
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const menuItems = [
-    { id: 'products', label: 'Products', icon: Package },
-    { id: 'sales', label: 'Sales', icon: ShoppingCart },
-    { id: 'trends', label: 'Sales Trends', icon: TrendingUp },
-    { id: 'alerts', label: 'Stock Alerts', icon: AlertTriangle },
-    { id: 'stock-activity', label: 'Stock Activity', icon: Activity },
+    { id: 'products', label: 'Products', icon: () => (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+      </svg>
+    ) },
+    { id: 'sales', label: 'Sales', icon: () => (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.1 5H19M7 13l-1.1 5M7 13l2.5-2.5M17 18v2a2 2 0 01-2 2H9a2 2 0 01-2-2v-2m10 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v9m10 0h-4m-6 0h4" />
+      </svg>
+    ) },
+    { id: 'trends', label: 'Sales Trends', icon: () => (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+      </svg>
+    ) },
+    { id: 'alerts', label: 'Stock Alerts', icon: () => (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
+      </svg>
+    ) },
+    { id: 'stock-activity', label: 'Stock Activity', icon: () => (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+      </svg>
+    ) },
   ];
 
   const handleMenuItemClick = (id: string) => {
@@ -78,7 +97,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, onViewChange }) =
         <nav className="flex-1 p-4 overflow-y-auto">
           <ul className="space-y-1.5">
             {menuItems.map((item) => {
-              const Icon = item.icon;
               const isActive = currentView === item.id;
               return (
                 <li key={item.id}>
@@ -90,7 +108,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, onViewChange }) =
                         : 'text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-700/50 hover:shadow-sm'
                     }`}
                   >
-                    <Icon className={`w-5 h-5 mr-3 ${isActive ? 'text-blue-600 dark:text-blue-400' : ''}`} />
+                    <span className={`mr-3 ${isActive ? 'text-blue-600 dark:text-blue-400' : ''}`}>
+                      {item.icon()}
+                    </span>
                     <span className="flex-1 text-left">{item.label}</span>
                     {isActive && (
                       <div className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400"></div>

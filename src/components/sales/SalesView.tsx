@@ -154,14 +154,14 @@ export const SalesView = () => {
               <DatePicker
                 label="Select Date"
                 value={selectedDate}
-                onChange={(date) => date && setSelectedDate(date)}
+                onChange={(date: any) => date && setSelectedDate(date)}
                 disableFuture
-                slotProps={{
-                  textField: {
-                    size: 'small',
-                    className: 'bg-white dark:bg-gray-700 rounded-lg'
-                  }
-                }}
+                renderInput={(params: any) => (
+                  <div
+                    {...params}
+                    className="px-3 py-2 text-sm font-medium bg-white dark:bg-gray-700 rounded-lg border border-gray-300 dark:border-gray-600"
+                  />
+                )}
               />
             </LocalizationProvider>
 
