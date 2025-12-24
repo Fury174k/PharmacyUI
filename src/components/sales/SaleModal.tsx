@@ -1,4 +1,4 @@
-import { useState, type FC, type FormEvent } from 'react';
+import React, { useState } from 'react';
 import type { Product } from '../../types';
 
 interface SaleModalProps {
@@ -7,7 +7,7 @@ interface SaleModalProps {
   onSave: (items: Array<{ product: number; quantity: number; unit_price: string }>) => Promise<void>;
 }
 
-export const SaleModal: FC<SaleModalProps> = ({ products, onClose, onSave }) => {
+export const SaleModal: React.FC<SaleModalProps> = ({ products, onClose, onSave }) => {
   const [saleItems, setSaleItems] = useState<Array<{ product: number; quantity: number; unit_price: string }>>([
     { product: 0, quantity: 1, unit_price: '0.00' }
   ]);
@@ -43,7 +43,7 @@ export const SaleModal: FC<SaleModalProps> = ({ products, onClose, onSave }) => 
     return saleItems.reduce((sum, item) => sum + parseFloat(calculateSubtotal(item)), 0).toFixed(2);
   };
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     const validItems = saleItems.filter(item => item.product > 0);

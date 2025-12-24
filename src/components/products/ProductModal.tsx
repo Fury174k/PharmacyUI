@@ -1,4 +1,4 @@
-import { useState, useEffect, type FC, type FormEvent } from 'react';
+import React, { useState, useEffect } from 'react';
 import type { Product } from '../../types';
 
 // Function to generate a random SKU
@@ -15,7 +15,7 @@ interface ProductModalProps {
   onSave: (product: Partial<Product>) => Promise<void>;
 }
 
-export const ProductModal: FC<ProductModalProps> = ({ product, onClose, onSave }) => {
+export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose, onSave }) => {
   const [formData, setFormData] = useState({
     sku: product?.sku || '',
     name: product?.name || '',
@@ -49,7 +49,7 @@ export const ProductModal: FC<ProductModalProps> = ({ product, onClose, onSave }
     }
   }, [formData.name]);
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError(null);

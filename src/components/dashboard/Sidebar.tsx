@@ -1,12 +1,12 @@
 import { useAuth } from '../../contexts/AuthContext';
-import { useState, type FC } from 'react';
+import React, { useState } from 'react';
 
 interface SidebarProps {
   currentView: string;
   onViewChange: (view: string) => void;
 }
 
-export const Sidebar: FC<SidebarProps> = ({ currentView, onViewChange }) => {
+export const Sidebar: React.FC<SidebarProps> = ({ currentView, onViewChange }) => {
   const { logout, user } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 

@@ -1,18 +1,18 @@
-import { useState, type FC, type FormEvent } from 'react';
+import React, { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 
 interface LoginPageProps {
   onSwitchToRegister: () => void;
 }
 
-export const LoginPage: FC<LoginPageProps> = ({ onSwitchToRegister }) => {
+export const LoginPage: React.FC<LoginPageProps> = ({ onSwitchToRegister }) => {
   const { login } = useAuth();
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [username, setUsername] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [error, setError] = React.useState('');
+  const [loading, setLoading] = React.useState(false);
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
     setLoading(true);
