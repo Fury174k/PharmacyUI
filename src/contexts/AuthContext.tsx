@@ -1,29 +1,26 @@
-import React, { createContext, useState, useEffect, useContext } from 'react';
+import { createContext, useState, useEffect, useContext } from 'react';
 import type { User, AuthContextType } from '../types';
 import { apiClient } from '../services/api';
 
-const AuthContext = React.createContext<AuthContextType | undefined>(undefined);
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [user, setUser] = React.useState<User | null>(null);
-  const [accessToken, setAccessToken] = React.useState<string | null>(localStorage.getItem('accessToken'));
-  const [refreshToken, setRefreshToken] = React.useState<string | null>(localStorage.getItem('refreshToken'));
-  const [loading, setLoading] = React.useState(true);
+export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+  const [user, setUser] = useState<User | null>(null);
+  const [accessToken, setAccessToken] = useState<string | null>(localStorage.getItem('accessToken'));
+  const [refreshToken, setRefreshToken] = useState<string | null>(localStorage.getItem('refreshToken'));
+  const [loading, setLoading] = useState(true);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const initAuth = async () => {
       const storedAccessToken = localStorage.getItem('accessToken');
-      // refresh token is optional depending on backend (TokenAuth vs JWT)
       const storedRefreshToken = localStorage.getItem('refreshToken');
       if (storedAccessToken) {
         try {
-          // set tokens first so apiClient.getUser() can include Authorization header
           setAccessToken(storedAccessToken);
           if (storedRefreshToken) setRefreshToken(storedRefreshToken);
           const userData = await apiClient.getUser();
           setUser(userData);
         } catch (error) {
-          // invalid token, clear storage
           localStorage.removeItem('accessToken');
           localStorage.removeItem('refreshToken');
           setAccessToken(null);
@@ -39,7 +36,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const login = async (username: string, password: string) => {
     const response = await apiClient.login(username, password) as any;
-    // Support both TokenAuth ({ token }) and JWT ({ access, refresh })
     if (response && typeof response === 'object') {
       if ('token' in response && response.token) {
         localStorage.setItem('accessToken', response.token);
@@ -88,7 +84,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 };
 
 export const useAuth = () => {
-  const context = React.useContext(AuthContext);
+  const context = useContext(AuthContext);
   if (!context) throw new Error('useAuth must be used within AuthProvider');
   return context;
 };
